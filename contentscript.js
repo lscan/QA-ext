@@ -1,11 +1,11 @@
-
+//declares the variable for the URL of the migration pages and establishes the array 
 var onPageData1 = document.querySelectorAll('#migration-table .url-box:nth-child(2) a');
 var sandboxArray = [];
 
+
+
 function copyTextToClipboard(text) {
   var textArea = document.createElement("textarea");
-
-  
 
   // Place in top-left corner of screen regardless of scroll position.
   textArea.style.position = 'fixed';
@@ -45,17 +45,39 @@ function copyTextToClipboard(text) {
   document.body.removeChild(textArea);
 };
 
+/* For loop cycles through onPageData2[i] as well as cycling through 
+sibling element sibling[2] (which === 'draft-box'). 
+If siblings[2].innerHTML === 'true', then the innerHTML of the onPageData2 iteration is
+pushed to liveArray[];
+*/
 for (var i = 0; i < onPageData1.length; i++) {
-    console.log(onPageData1[i].innerHTML);
-    sandboxArray.push(onPageData1[i]);
-    console.log(sandboxArray.toString());
-  };
+        console.log(onPageData1[i].innerHTML);
+        var getSiblings = function (elem) {
+            var siblings = [];
+            var sibling = elem.parentNode.firstChild;
+            for ( ; sibling; sibling = sibling.nextSibling ) {
+                if ( sibling.nodeType === 1 && sibling !== elem ) {
+                    siblings.push( sibling );
+                }
+            }
+            return siblings;
+        };
 
+        // declares the elem variable as onPageData2[i] and moves the target element to the parent element
+        var elem = onPageData1[i].parentNode;
+        var siblings = getSiblings(elem);
+    //if statement to qualify whether the URL is in draft mode or live. It check the 
+   //inner html of the array item siblings[2] which equates to the .draft-box of the current iteration
+    if (siblings[2].innerHTML === 'false'){
+            //this method pushes the contents of the current onPageData2 iteration to the array
+            sandboxArray.push(onPageData1[i]);
+            console.log(sandboxArray.toString());
+              } else {
+                console.log('draft');
+              }
+          }; 
+//This function copies the text to the clipboard and joins the results of the array, 
+// removing commas and adding a return line break       
 copyTextToClipboard(sandboxArray.join('\n'));
 
-
-  /*chrome.runtime.sendMessage({message: liveArray}, function(response) {
-    /*console.log(response);
-  });*/
-  
 
