@@ -68,16 +68,30 @@
         -webkit-animation-duration: 2s;
         -webkit-animation-iteration-count: infinite;
       }
+
+      #liveUrlCount, #liveContainer {
+        color:white;
+        font-style: bold;
+        font-size: 24px;
+      }
+      #draftUrlCount, #draftContainer {
+        color:white;
+        font-style: bold;
+        font-size: 24px;
+      }
     </style>
   </head>
   <body id='loading_screen'>
     <div id="copy_background">
       <h1> Click the buttons below to copy URLs to the clipboard</h1>
       <div class="button-container">
-      <a class="button red">Copy CMS URLs</a>
-      <a class="button blue">Copy COS URLs</a>
+      <a class="button red js-copy-sandbox-btn">Copy CMS URLs</a>
+      <a class="button blue js-copy-live-btn">Copy COS URLs</a>
       </div>
-    </div>  
+    </div> 
+    <div id="liveContainer">Live Pages Found: <div id="liveUrlCount"></div></div> 
+    <div id="draftContainer">Draft Pages Found: <div id="draftUrlCount"></div></div>
     <script type="text/javascript" src="popup.js"></script>
     </body>
 </html>
+
