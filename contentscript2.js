@@ -1,12 +1,10 @@
 
-  //declares the variable for the URL of the migration pages and establishes the array 
-  var onPageData2 = document.querySelectorAll('#migration-table .url-box:nth-child(3) a');
-  var liveArray = [];
-  var liveUrlCount = 0; 
-  var draftUrlCount = 0;
-  var scriptMsg ="script two";
-  
-  
+//declares the variable for the URL of the migration pages and establishes the array 
+var onPageData2 = document.querySelectorAll('#migration-table .url-box:nth-child(3) a');
+var liveArray = [];
+var liveUrlCount = 0; 
+var draftUrlCount = 0;
+var scriptMsg ="script two";
 
 function copyTextToClipboard(text) {
   var textArea = document.createElement("textarea");
@@ -61,30 +59,32 @@ for (var i = 0; i < onPageData2.length; i++) {
   var getSiblings = function (elem) {
     var siblings = [];
     var sibling = elem.parentNode.firstChild;
-     for ( ; sibling; sibling = sibling.nextSibling ) {
-        if ( sibling.nodeType === 1 && sibling !== elem ) {
-                siblings.push( sibling );
-                }
-            }
-            return siblings;
-        };
-    // declares the elem variable as onPageData2[i] and moves the target element up a level 
-    // in the DOM to the parent element
-    var elem = onPageData2[i].parentNode;
-    var siblings = getSiblings(elem);
+    for ( ; sibling; sibling = sibling.nextSibling ) {
+      if ( sibling.nodeType === 1 && sibling !== elem ) {
+        siblings.push( sibling );
+      }
+    }
+    return siblings;
+  };
+
+  // declares the elem variable as onPageData2[i] and moves the target element up a level 
+  // in the DOM to the parent element
+  var elem = onPageData2[i].parentNode;
+  var siblings = getSiblings(elem);
     
-   //if statement to qualify whether the URL is in draft mode or live. It checks the 
-   //inner html of the array item siblings[2] which equates to the .draft-box of the current iteration
-    if (siblings[2].innerHTML === 'false'){
-            //this method pushes the contents of the current onPageData2 iteration to the array
-            liveArray.push(onPageData2[i]);
-            console.log(liveArray.toString());
-            liveUrlCount++;
-              } else {
-                console.log('draft');
-                draftUrlCount++;
-              }
-          }; 
+  //if statement to qualify whether the URL is in draft mode or live. It checks the 
+  //inner html of the array item siblings[2] which equates to the .draft-box of the current iteration
+  if (siblings[2].innerHTML === 'false') {
+    //this method pushes the contents of the current onPageData2 iteration to the array
+    liveArray.push(onPageData2[i]);
+    console.log(liveArray.toString());
+    liveUrlCount++;
+  }
+  else {
+    console.log('draft');
+    draftUrlCount++;
+  }
+};
 
 //This function copies the text to the clipboard and joins the results of the array, 
 // removing commas and adding a return line break        
@@ -96,9 +96,5 @@ var urlArray = [liveUrlCount, draftUrlCount, scriptMsg];
 
 //pass urlArray through chrome messaging to send to popup.js
 chrome.runtime.sendMessage({message: urlArray }, function(response){
-    console.log(response);
-    });
-
-
-
-
+  console.log(response);
+});
