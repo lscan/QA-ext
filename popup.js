@@ -28,8 +28,8 @@ chrome.runtime.onMessage.addListener(function(request, sender){
     console.log(request.message[1]);
     console.log(request.message[2]);
     //traverse DOM of popup.html and add the values to the divs
-    document.getElementById('liveUrlCount').innerHTML = liveUrlCount;
-    document.getElementById('draftUrlCount').innerHTML = draftUrlCount;
+    document.querySelector('.liveUrlCount').innerHTML = liveUrlCount;
+    document.querySelector('.draftUrlCount').innerHTML = draftUrlCount;
 
     if (msg === "script two") {
       document.querySelector('.js-copy-sandbox-btn').innerHTML = "Copied!";
@@ -40,6 +40,3 @@ chrome.runtime.onMessage.addListener(function(request, sender){
       console.log('copying not successful');
     }
 });
-
-
-
