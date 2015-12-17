@@ -1,0 +1,83 @@
+@-webkit-keyframes redPulse {
+  from { background-color: #bc330d; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #e33100; -webkit-box-shadow: 0 0 18px #e33100; }
+  to { background-color: #bc330d; -webkit-box-shadow: 0 0 9px #333; }
+}
+@-webkit-keyframes bluePulse {
+  from { background-color: #007d9a; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #2daebf; -webkit-box-shadow: 0 0 18px #2daebf; }
+  to { background-color: #007d9a; -webkit-box-shadow: 0 0 9px #333; }
+}
+body {
+  width: 500px;
+  background: url('http://cats.antarcticastartshere.net/issue_04/spacecat_02.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 20px;
+  font-size: 16px;
+}
+.copy-container {
+  background-color: rgba(255,255,255,.8);
+  padding: 20px 10px;
+  border-radius: 5px;
+}
+.copy-container h1 {
+  margin-top: 0;
+  text-align: center;
+  color: DimGray;
+  font-size: 26px;
+  font-family: Verdana;
+}
+.button-container {
+  text-align: center;
+}
+.button {
+  border-style: solid;
+  border-width: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: normal;
+  margin: 0 0 1.25em;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  padding-top: 0.75em;
+  padding-right: 1.5em;
+  padding-bottom: 0.8125em;
+  padding-left: 1.5em;
+  font-size: 1em;
+  background-color: #2daebf;
+  border-color: #238896;
+  color: white;
+  margin: 0 10px;
+}
+.red {
+  -webkit-animation-name: redPulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+.blue {
+  -webkit-animation-name: bluePulse;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+.message-container {
+  background-color: rgba(255,255,255,.8);
+  padding-left: 8px;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 5px 5px;
+}
+.live-container, .draft-container {
+  font-family: papyrus;
+  font-weight: bold;
+  font-size: 30px;
+}
+.live-container {
+  color: rebeccapurple; 
+}
+.draft-container {
+  color: MediumVioletRed;
+}
